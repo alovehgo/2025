@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAYLEY網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#A8DADC', // 淡藍色首頁
+                        secondary: '#D8F3DC', // 淺綠色分頁
+                        accent: '#1D3557', // 深藍色標籤
+                        highlight: '#FFE66D', // 淡黃色滑動/點擊效果
+                        text: '#333333' // 黑色內文
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .art-text {
+                text-shadow: 2px 2px 3px rgba(35, 1, 88, 0.2);
+                letter-spacing: 0.2em;
+            }
+            /* 修正标签样式：深蓝色粗体 + 放大 + 点击选中效果 */
+            .nav-item {
+                @apply px-4 py-2 rounded transition-all duration-300 hover:bg-highlight 
+                       text-accent font-bold text-[1.2em] cursor-pointer; /* 深藍色、粗體、放大1.2倍 */
+            }
+            /* 选中状态样式（和hover区分） */
+            .nav-item.active {
+                @apply bg-highlight;
+            }
+            .tab-content {
+                @apply hidden;
+            }
+            .tab-content.active {
+                @apply block;
+            }
+            .grid-item {
+                @apply bg-white rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer;
+            }
+            /* 修复按钮居中样式 */
+            .center-block {
+                @apply flex justify-center;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-text">
+    <!-- 頁首標題 -->
+    <header class="py-6 px-4 text-center bg-primary">
+        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-accent art-text">HAYLEY網站</h1>
+    </header>
+
+    <!-- 導航標籤 -->
+    <nav class="bg-secondary py-3 px-5 sticky top-0 z-10 shadow-md">
+        <div class="container mx-auto flex flex-wrap justify-center gap-2 md:gap-6">
+            <div class="nav-item active" data-tab="home">首頁</div>
+            <div class="nav-item" data-tab="program-trading">程式交易</div>
+            <div class="nav-item" data-tab="multicharts">MultiCharts</div>
+            <div class="nav-item" data-tab="learning">學習筆記</div>
+            <!-- 修复：賓果遊戲链接样式统一（去掉内层重复nav-item，避免样式冲突） -->
+            <a class="nav-item" data-tab="game" href="https://alovehgo.github.io/2025/Liu.html">賓果遊戲</a>
+        </div>
+    </nav>
+
+    <!-- 主要內容 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 首頁內容 -->
+        <div id="home" class="tab-content active">
+            <div class="bg-primary rounded-xl p-6 shadow-md">
+                <h7 class="text-2xl md:text-3xl font-bold mb-6 text-accent"> Hayley 歡 迎 您  ~    </h7>
+                <br>
+                <br>
+                
+               
+                 <span class="font-bold text-1.5xl text-blue-500">  <p class="mb-4"> 這 是  我 的 金 融 學 習 分 享 網 站</p>
+               </span></p>
+            <!-- 第二行：整段文字示例（整行都改） -->
+
+
+             <div class="font-bold text-1.5xl text-blue-500"> <p class="mb-4">        技 術 分 析   以 及  程 式 交 易 策 略</p></div>
+ 
+
+
+
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">網站內容</h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>程式交易分享</li>
+                        <li>認識技術指標</li>
+                        <li>賓果遊戲學習</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">學習分享</h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>技術指標的基本概念</li>
+                        <li>撰寫程式交易與分析</li>
+                        <li>測試結果與優化策略</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 程式交易內容 -->
+        <div id="program-trading" class="tab-content">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent">程式交易分析</h2>
+            
+            <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                <h3 class="text-xl font-bold mb-4">交易策略績效</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border border-gray-200 rounded p-4 text-center">
+                        <p class="font-semibold">移動平均交叉策略</p>
+                        <p>年化報酬率: 18.5%</p>
+                        <p>最大回撤: 8.2%</p>
+                    </div>
+                    <div class="border border-gray-200 rounded p-4 text-center">
+                        <p class="font-semibold">RSI震盪策略</p>
+                        <p>年化報酬率: 15.3%</p>
+                        <p>最大回撤: 6.7%</p>
+                    </div>
+                    <div class="border border-gray-200 rounded p-4 text-center">
+                        <p class="font-semibold">MACD趨勢策略</p>
+                        <p>年化報酬率: 16.1%</p>
+                        <p>最大回撤: 9.5%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-xl font-bold mb-4">策略開發筆記</h3>
+                <div class="space-y-4">
+                    <div>
+                        <p class="font-semibold"> 移動平均策略優化</p>
+                        <p>調整參數後 降低了30%的交易次數 同時提高報酬率</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">多策略組合測試</p>
+                        <p>組合三種策略後 平滑了資金曲線 降低整體風險</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">初始策略開發</p>
+                        <p>基於5日與20日移動平均交叉的基礎策略架構</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MultiCharts內容 -->
+        <div id="multicharts" class="tab-content">
+            <h3 class="text-2xl md:text-3xl font-bold mb-6 text-accent">PowerLanguage</h3>
+            
+            <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                <h5 class="text-xl font-bold mb-4">選擇公式類型(指標 信號 函數)</h5>
+                    
+                <ol class="list-decimal pl-5 space-y-3">
+                    
+            
+                    
+                    <li>撰寫程式碼 設定參數與變數</li>
+                    <li>撰寫計算邏輯與繪圖指令</li>
+                    <li>保存公式 命名並選擇存放路徑</li>
+                    <li>圖表上插入公式 調整參數並測試</li>
+                </ol>
+            </div>
+
+            <!-- 修复：按钮居中 + 样式优化 -->
+            <div class="mt-6 center-block">
+                <a href="https://www.multicharts.com.tw/" target="_blank" rel="noopener noreferrer" 
+                    style="display:inline-block; padding:15px 26px; background:#a8e9d0; color:rgb(7, 12, 96);
+                        text-decoration:none; border-radius:10px; hover:background:#14263E; transition: background 0.3s ease;">
+                    <i class="fa fa-external-link mr-2"></i>前往MultiCharts
+                </a>
+            </div>
+
+            <br><br>
+            <br>
+
+
+            <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                <h3 class="text-xl font-bold mb-4">關鍵字</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-semibold">Inputs</p>
+                        <p>用於設定可調整的參數 如周期長度</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Vars</p>
+                        <p>用於宣告變數 儲存計算過程中的數值</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Close/C</p>
+                        <p>表示收盤價 是計算技術指標的常用數據</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Plot</p>
+                        <p>用於在圖表上繪製線條 顯示指標數值</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Average</p>
+                        <p>計算平均值的函數 常用於計算移動平均線</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Condition</p>
+                        <p>用於設定條件判斷 如交叉信號的產生</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-md">
+                <h3 class="text-xl font-bold mb-4">操作步驟</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>新增圖表後 選擇對應商品與時間週期</li> 
+                    <li>按住滑鼠右鍵拖動圖表可平移視圖</li>
+                    <li>使用滑鼠滾輪縮放圖表時間範圍</li>
+                    <li>透過格式選單調整指標線條顏色與樣式</li>
+                    <li>利用策略測試器評估交易策略績效</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 學習內容 -->
+        <div id="learning" class="tab-content">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent">技術指標</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">MACD</h3>
+                    <p class="mb-2">移動平均收斂散度</p>
+                    <p class="mb-3">由快線 慢線與柱狀體組成</p>
+                    <p>用於判斷趨勢強弱與轉折</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">RSI</h3>
+                    <p class="mb-2">相對強弱指標</p>
+                    <p class="mb-3">數值範圍0-100</p>
+                    <p>用於判斷市場超買超賣狀態</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">KD指標</h3>
+                    <p class="mb-2">隨機指標</p>
+                    <p class="mb-3">由K值與D值組成</p>
+                    <p>用於判斷價格反轉信號</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">布林通道</h3>
+                    <p class="mb-2">由中軌 上軌與下軌組成</p>
+                    <p class="mb-3">基於移動平均線與標準差計算</p>
+                    <p>用於判斷價格波動範圍與趨勢</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">MA</h3>
+                    <p class="mb-2">移動平均線</p>
+                    <p class="mb-3">常用有5日 20日 60日等周期</p>
+                    <p>用於判斷價格趨勢方向</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">Volume</h3>
+                    <p class="mb-2">成交量</p>
+                    <p class="mb-3">反映市場參與者的交易活躍度</p>
+                    <p>用於確認價格走勢的有效性</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">ATR</h3>
+                    <p class="mb-2">平均真實波幅</p>
+                    <p class="mb-3">衡量價格波動程度的指標</p>
+                    <p>用於設定停損點與判斷波動率</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">OBV</h3>
+                    <p class="mb-2">能量潮指標</p>
+                    <p class="mb-3">將成交量與價格相結合</p>
+                    <p>用於判斷資金流向與價格背離</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-5 shadow-md">
+                    <h3 class="text-xl font-bold mb-3 text-accent">DMI</h3>
+                    <p class="mb-2">方向指標</p>
+                    <p class="mb-3">由ADX DI+ DI-組成</p>
+                    <p>用於判斷趨勢強度與方向</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="bg-accent text-white py-6 px-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>網站版權所有 © HAYLEY  LIU   2025 </p>
+        </div>
+    </footer>
+
+    <!-- 新增：标签页切换核心JavaScript（点击标签切换内容） -->
+    <script>
+        // 等待页面加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有导航标签
+            const navItems = document.querySelectorAll('.nav-item');
+            // 获取所有标签内容
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // 给每个标签添加点击事件
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // 1. 获取当前标签的data-tab属性（对应内容的id）
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // 2. 移除所有标签的active类（取消选中状态）
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    // 给当前点击的标签添加active类（选中状态）
+                    this.classList.add('active');
+                    
+                    // 3. 隐藏所有标签内容
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    // 显示当前标签对应的内容
+                    document.getElementById(tabName).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
